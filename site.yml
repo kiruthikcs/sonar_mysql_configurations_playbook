@@ -1,0 +1,16 @@
+---
+## Web servers
+- hosts: localhost
+  roles:
+    - server-common
+    - webserver
+  become: yes
+#  gather_facts: no
+
+## DB servers
+- hosts: localhost
+  roles:
+    - server-common
+    - dbserver
+  become: yes
+ # gather_facts: no 

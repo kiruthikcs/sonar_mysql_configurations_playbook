@@ -1,0 +1,12 @@
+---
+- name: getting sonar repo
+  get_url: url=http://downloads.sourceforge.net/project/sonar-pkg/rpm/sonar.repo dest=/etc/yum.repos.d/sonar.repo mode=0777
+
+- name: install sonar
+  yum: name=sonar state=latest update_cache=true
+
+- name:  sonar configuration
+  template: src=sonar.properties dest={{sonar_root}}/conf/sonar.properties
+
+  notify:
+  - start sonar

@@ -1,0 +1,39 @@
+---
+  - name: Mysql repo installation
+    yum: name=http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm state=present
+
+  - name: Install Mysql 5.6
+    yum: pkg={{ item }}
+    with_items:
+     - mysql-community-server
+     - mysql-community-client
+     - MySQL-python
+    notify:
+    - restart mysqld
+
+  - name: Configure local MySQL root user password
+    become: yes
+    mysql_user:
+      login_host: localhost
+      login_user: "root"
+      login_password: "mysql!23"
+      name: "{{login_user1}}"
+      password: "{{login_password1}}"
+      state: present
+
+  - name: Remove test database if exists
+    mysql_db: name=test state=absent login_user={{login_user1}} login_password={{login_password1}}
+
+  - name: Remove all anonymous user accounts
+    mysql_user: name="" host_all=yes state=absent login_user={{login_user1}} login_password={{login_password1}}
+
+  - name: Change the root password
+    mysql_user: name=root password="mysql!23" login_user={{login_user1}} login_password={{login_password1}}
+
+  - name: Create database for Sonar
+    mysql_db: name={{ DataB_name }} state=present encoding=utf8 login_user={{login_user1}} login_password={{login_password1}}
+  - name: Create sonar user and Grant  Privileges
+    mysql_user: name={{ mysql_user1 }} password={{ mysql_user_password1 }} priv=sonar.*:ALL state=present host={{sonar_ip}} login_user={{login_user1}} login_password={{login_password1}}
+
+    notify:
+    - restart mysql

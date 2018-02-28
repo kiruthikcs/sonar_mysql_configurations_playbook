@@ -1,0 +1,4 @@
+---
+- include: install_java.yml
+- include: install_sonar.yml
+- include: iptable.yml

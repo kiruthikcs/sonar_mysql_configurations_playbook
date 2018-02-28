@@ -1,0 +1,5 @@
+---
+sonar_root: /opt/sonar/
+sonar_jdbc_username: sonar
+sonar_jdbc_password: mysql!23
+sonar_jdbc_url: jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false

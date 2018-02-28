@@ -1,0 +1,8 @@
+---
+## DB servers
+- hosts: localhost
+  roles:
+    - server-common
+    - dbserver
+  become: yes
+#  gather_facts: 

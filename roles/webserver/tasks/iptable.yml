@@ -1,0 +1,7 @@
+---
+
+- name: Aadding iptable rule
+  become: yes
+  command: iptables -I INPUT 1 -p tcp --dport 9000 -j ACCEPT -m comment --comment "port 9000"
+  command: iptables -I INPUT 1 -p tcp --dport 80 -j ACCEPT
+  command: iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 9000

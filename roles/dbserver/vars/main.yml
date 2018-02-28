@@ -1,0 +1,8 @@
+---
+login_user1: root
+login_password1: mysql!23 
+
+mysql_user1: sonar
+mysql_user_password1: mysql!23
+
+DataB_name: sonar
