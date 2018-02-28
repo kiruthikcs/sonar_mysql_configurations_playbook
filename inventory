@@ -1,9 +1,6 @@
 ---
 - hosts:
     localhost
-    sonar_ip
-  vars:
-    - sonar_ip=54.200.231.186
       
     
 

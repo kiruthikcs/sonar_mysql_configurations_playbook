@@ -33,7 +33,7 @@
   - name: Create database for Sonar
     mysql_db: name={{ DataB_name }} state=present encoding=utf8 login_user={{login_user1}} login_password={{login_password1}}
   - name: Create sonar user and Grant  Privileges
-    mysql_user: name={{ mysql_user1 }} password={{ mysql_user_password1 }} priv=sonar.*:ALL state=present host={{sonar_ip | default('localhost')}} login_user={{login_user1}} login_password={{login_password1}}
+    mysql_user: name={{ mysql_user1 }} password={{ mysql_user_password1 }} priv=sonar.*:ALL state=present host={{sonar_ip}} login_user={{login_user1}} login_password={{login_password1}}
 
     notify:
     - restart mysql
