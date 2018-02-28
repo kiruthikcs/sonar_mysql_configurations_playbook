@@ -1,0 +1,7 @@
+# Here is the variables related to sonar installation
+
+# Web Server IP
+sonar_ip: localhost
+
+# Database Server IP
+mysql_ip: localhsot
